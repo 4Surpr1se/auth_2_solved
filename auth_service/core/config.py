@@ -7,9 +7,9 @@ config.dictConfig(LOGGING)
 
 
 class Settings(BaseSettings):
-    model_config = SettingsConfigDict(env_file='.env', env_file_encoding='utf-8', extra='ignore')
-
+    model_config = SettingsConfigDict(env_file='.env.example', env_file_encoding='utf-8', extra='ignore')
     project_name: str = "Auth Service"
+    enable_tracer: bool = Field(default=True, alias="ENABLE_TRACER")
 
     # Database settings
     database_url: str = Field(..., alias="DATABASE_URL")
